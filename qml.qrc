@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Home.qml</file>
+        <file>Button.qml</file>
+        <file>WebDashboard.qml</file>
+        <file>WifiConfig.qml</file>
+        <file>PageManager.qml</file>
+        <file>NotifyButton.qml</file>
+        <file>TimeRect.qml</file>
+        <file>WifiButton.qml</file>
+        <file>Checkbox.qml</file>
+    </qresource>
+</RCC>

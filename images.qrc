@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/imgs">
+        <file>images/web.png</file>
+        <file>images/wifi-gray.png</file>
+        <file>images/bell-gray.png</file>
+        <file>images/left-arrow-gray.png</file>
+        <file>images/right-arrow-gray.png</file>
+        <file>images/settings.png</file>
+        <file>images/calendar.png</file>
+        <file>images/file.png</file>
+        <file>images/photo-camera.png</file>
+        <file>images/placeholder.png</file>
+        <file>images/stopwatch.png</file>
+        <file>images/users.png</file>
+        <file>images/video-player.png</file>
+        <file>images/wifi.png</file>
+        <file>images/home-small.png</file>
+        <file>images/up-white.png</file>
+        <file>images/down-white.png</file>
+        <file>images/wifi0.png</file>
+        <file>images/wifi1.png</file>
+        <file>images/wifi2.png</file>
+        <file>images/wifi3.png</file>
+        <file>images/wifi4.png</file>
+        <file>images/refresh.png</file>
+        <file>images/tick.png</file>
+    </qresource>
+</RCC>
