@@ -17,7 +17,7 @@ public:
 
     Q_INVOKABLE bool postMessage(const QString &msg);
 
-    Q_INVOKABLE QStringList getWifiNetworks();
+    Q_INVOKABLE QList<QObject*> getWifiNetworks();
     Q_INVOKABLE int getWifisCount();
 
     Q_INVOKABLE QString getConectedWifiName();

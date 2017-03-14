@@ -1,6 +1,8 @@
 #include "wifimanager.h"
 
 #include "wifi/wifi_scan.h"
+#include "wifi/wifiinfo.h"
+
 #include <stdio.h>
 
 #include <QDebug>
@@ -16,9 +18,9 @@ static const int BSS_INFOS=10; //the maximum amounts of APs (Access Points) we w
 
 WifiManager::WifiManager(QObject *parent) : QObject(parent){}
 
-QStringList WifiManager::getWifiNetworks() {
+QList<QObject*> WifiManager::getWifiNetworks() {
 
-    list.clear();
+    dataList.clear();
 
     struct wifi_scan *wifi=NULL;    //this stores all the library information
     struct bss_info bss[BSS_INFOS]; //this is where we are going to keep informatoin about APs (Access Points)
@@ -44,7 +46,9 @@ QStringList WifiManager::getWifiNetworks() {
         // it may be greater than BSS_INFOS that's why we test for both in the loop
         for(i=0;i<status && i<BSS_INFOS;++i) {
             printf("%s %s signal %d dBm seen %d ms ago status %s\n", bssid_to_string(bss[i].bssid, mac), bss[i].ssid,  bss[i].signal_mbm/100, bss[i].seen_ms_ago, (bss[i].status==BSS_ASSOCIATED ? "associated" : ""));
-            list << bss[i].ssid;
+
+            dataList.append(new WifiInfo(bss[i].ssid, bss[i].signal_mbm/100));
+
         }
     }
     printf("\n");
@@ -52,7 +56,7 @@ QStringList WifiManager::getWifiNetworks() {
     //free the library resources
     wifi_scan_close(wifi);
 
-    return list;
+    return dataList;
 }
 
 void WifiManager::connectToWifi(QString name, QString pass) {

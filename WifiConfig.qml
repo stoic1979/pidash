@@ -31,6 +31,16 @@ Rectangle {
 
     }
 
+    function decideWifiImageSrc(strength) {
+        console.log("-- decideWifiImageSrc: " + strength);
+
+        if(strength <= -90) return "qrc:/imgs/images/wifi0.png";
+        if(strength <= -80) return "qrc:/imgs/images/wifi1.png";
+        if(strength <= -70) return "qrc:/imgs/images/wifi2.png";
+        if(strength <= -67) return "qrc:/imgs/images/wifi3.png";
+        if(strength <= -30) return "qrc:/imgs/images/wifi4.png";
+    }
+
 
     //------------------------------------------------------------
     //                TOP BAR
@@ -156,11 +166,12 @@ Rectangle {
                     width: listItem.width -20
                     x: 10
                     height: 60
-                    wifiTite: modelData
-                    //color: "#1E323D"
+                    wifiTite: modelData.getName()
                     color: btnColor
                     textColor: "white"
                     y: 5
+
+                    imgSrc: decideWifiImageSrc(modelData.getStrength());
 
                     onClicked: {
 

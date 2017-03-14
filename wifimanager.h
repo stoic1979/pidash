@@ -9,7 +9,7 @@ class WifiManager : public QObject
 public:
     explicit WifiManager(QObject *parent = 0);
 
-    QStringList getWifiNetworks();
+    QList<QObject*> getWifiNetworks();
     void connectToWifi(QString name, QString pass);
 
 signals:
@@ -19,8 +19,7 @@ public slots:
 
 
 private:
-    QStringList list;
-
+    QList<QObject*> dataList;
 };
 
 #endif // WIFIMANAGER_H

@@ -14,6 +14,7 @@ Rectangle {
 
     property alias collapseImgSrc: collapseImg.source
 
+    property alias imgSrc: img.source
 
     y: 5
 

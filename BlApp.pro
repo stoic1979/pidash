@@ -6,7 +6,8 @@ CONFIG += c++11
 SOURCES += main.cpp \
     qmlbridge.cpp \
     wifi/wifi_scan.c \
-    wifimanager.cpp
+    wifimanager.cpp \
+    wifi/wifiinfo.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -40,4 +41,5 @@ DISTFILES +=
 HEADERS += \
     qmlbridge.h \
     wifi/wifi_scan.h \
-    wifimanager.h
+    wifimanager.h \
+    wifi/wifiinfo.h
