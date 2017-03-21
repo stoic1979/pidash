@@ -12,6 +12,8 @@
  * GNU General Public License for more details.
  */
  
+#if 0
+
  /*
   * Library Overview
   * 
@@ -892,3 +894,5 @@ void die_errno(const char *s)
     perror(s);
     exit(1);
 }
+
+#endif

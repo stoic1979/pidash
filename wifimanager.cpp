@@ -7,6 +7,7 @@
 
 #include <QDebug>
 
+#if 0
 //convert bssid to printable hardware mac address
 const char *bssid_to_string(const uint8_t bssid[BSSID_LENGTH], char bssid_string[BSSID_STRING_LENGTH]) {
     snprintf(bssid_string, BSSID_STRING_LENGTH, "%02x:%02x:%02x:%02x:%02x:%02x",
@@ -16,7 +17,7 @@ const char *bssid_to_string(const uint8_t bssid[BSSID_LENGTH], char bssid_string
 
 static const int BSS_INFOS=10; //the maximum amounts of APs (Access Points) we want to store
 
-WifiManager::WifiManager(QObject *parent) : QObject(parent){}
+
 
 QList<QObject*> WifiManager::getWifiNetworks() {
 
@@ -44,7 +45,7 @@ QList<QObject*> WifiManager::getWifiNetworks() {
     else {
         // wifi_scan_all returns the number of found stations,
         // it may be greater than BSS_INFOS that's why we test for both in the loop
-        for(i=0;i<status && i<BSS_INFOS;++i) {
+        for(i=0;i<status && i<BSS_INFOS;++i) {                                                                              
             printf("%s %s signal %d dBm seen %d ms ago status %s\n", bssid_to_string(bss[i].bssid, mac), bss[i].ssid,  bss[i].signal_mbm/100, bss[i].seen_ms_ago, (bss[i].status==BSS_ASSOCIATED ? "associated" : ""));
 
             dataList.append(new WifiInfo(bss[i].ssid, bss[i].signal_mbm/100));
@@ -56,6 +57,15 @@ QList<QObject*> WifiManager::getWifiNetworks() {
     //free the library resources
     wifi_scan_close(wifi);
 
+    return dataList;
+}
+#endif
+
+WifiManager::WifiManager(QObject *parent) : QObject(parent){}
+
+QList<QObject*> WifiManager::getWifiNetworks() {
+
+    dataList.clear();
     return dataList;
 }
 

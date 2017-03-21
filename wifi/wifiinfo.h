@@ -15,22 +15,10 @@ class WifiInfo : public QObject
 public:
     explicit WifiInfo(QString name, int strength, QObject *parent = 0);
 
-
-    Q_INVOKABLE QString getName() {
-        return name;
-    }
-
-    Q_INVOKABLE int getStrength() {
-        return strength;
-    }
-
-    Q_INVOKABLE void setName(QString n) {
-        name = n;
-    }
-
-    Q_INVOKABLE void setStrength(int s) {
-        strength = s;
-    }
+    Q_INVOKABLE QString getName();
+    Q_INVOKABLE int getStrength();
+    Q_INVOKABLE void setName(QString n);
+    Q_INVOKABLE void setStrength(int s);
 
 
 signals:

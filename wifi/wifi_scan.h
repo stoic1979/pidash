@@ -12,6 +12,8 @@
  * GNU General Public License for more details.
  */
 
+#if 0
+
 #pragma once
 
 #ifdef __cplusplus
@@ -117,4 +119,6 @@ int wifi_scan_all(struct wifi_scan *wifi, struct bss_info *bss_infos, int bss_in
 
 #ifdef __cplusplus
 }
+#endif
+
 #endif
