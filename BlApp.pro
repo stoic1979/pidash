@@ -7,7 +7,8 @@ SOURCES += main.cpp \
     qmlbridge.cpp \
     wifi/wifi_scan.c \
     wifimanager.cpp \
-    wifi/wifiinfo.cpp
+    wifi/wifiinfo.cpp \
+    utils.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -42,4 +43,5 @@ HEADERS += \
     qmlbridge.h \
     wifi/wifi_scan.h \
     wifimanager.h \
-    wifi/wifiinfo.h
+    wifi/wifiinfo.h \
+    utils.h

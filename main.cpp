@@ -7,6 +7,8 @@
 
 #include "qmlbridge.h"
 
+#include "utils.h"
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -14,6 +16,11 @@ int main(int argc, char *argv[])
     QtWebView::initialize();
 
     QmlBridge qmlBridge;
+
+
+    Utils utils;
+    qDebug() << "Result: " << utils.getCmdResult("ls");
+
 
     QQmlApplicationEngine engine;
 

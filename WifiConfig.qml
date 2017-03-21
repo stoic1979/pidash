@@ -330,7 +330,20 @@ Rectangle {
         anchors.top: centerRect.bottom
         width: parent.width
         height: barHeight
+        //color: "#1E323D"
         color: "#000000"
+
+        Rectangle {
+
+            width: bottomBar.width/4
+            height: bottomBar.height
+            color: bottomBar.color
+            Text {
+                anchors.centerIn: parent
+                text: qsTr("Connected To: " + qmlBridge.getConectedWifiName());
+                color: "#ffffff"
+            }
+        }
     }//bottomBar
 
 }//root

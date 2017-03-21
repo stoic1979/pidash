@@ -1,6 +1,7 @@
 #include <QProcess>
 #include "qmlbridge.h"
 #include "wifimanager.h"
+#include "utils.h"
 
 
 QmlBridge::QmlBridge(QObject *parent) : QObject(parent), wifiCount(0)
@@ -28,7 +29,8 @@ int QmlBridge::getWifisCount() {
 }
 
 QString QmlBridge::getConectedWifiName() {
-    return "WIFI-99";
+    Utils utils;
+    return utils.getCmdResult("iwgetid -r");
 }
 
 void QmlBridge::connectToWifi(QString name, QString pass) {
