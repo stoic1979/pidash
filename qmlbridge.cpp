@@ -13,15 +13,15 @@ void QmlBridge::test() {
 }
 
 bool QmlBridge::postMessage(const QString &msg) {
-        qDebug() << "[QmlBridge] :: Called the C++ method with" << msg;
-        return true;
+    qDebug() << "[QmlBridge] :: Called the C++ method with" << msg;
+    return true;
 }
 
 QList<QObject*> QmlBridge::getWifiNetworks() {
-        qDebug() << "[QmlBridge] :: getWifiNetworks";
+    qDebug() << "[QmlBridge] :: getWifiNetworks";
 
-        WifiManager wm;
-        return wm.getWifiNetworks();
+    WifiManager wm;
+    return wm.getWifiNetworks();
 }
 
 int QmlBridge::getWifisCount() {
@@ -36,4 +36,9 @@ QString QmlBridge::getConectedWifiName() {
 void QmlBridge::connectToWifi(QString name, QString pass) {
     WifiManager wm;
     wm.connectToWifi(name, pass);
+}
+
+QString QmlBridge::getDeivceName() {
+    Utils utils;
+    return utils.getCmdResult("whoami");
 }

@@ -24,6 +24,8 @@ public:
 
     Q_INVOKABLE void connectToWifi(QString name, QString pass);
 
+    Q_INVOKABLE QString getDeivceName();
+
 signals:
 
 public slots:

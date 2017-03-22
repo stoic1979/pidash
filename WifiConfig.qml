@@ -11,9 +11,13 @@ Rectangle {
 
     property int barHeight: 60
 
+    signal connectToWifi(string wifiName);
+
     // tell loader to change a page
     // eg. load/go-back to home page
     signal loadPage(string page)
+
+    property string curWifiName
 
 
     function refreshWifiList() {
@@ -41,6 +45,26 @@ Rectangle {
         if(strength <= -30) return "qrc:/imgs/images/wifi4.png";
     }
 
+    onConnectToWifi: {
+        console.log("onConnectToWifi() wifiName: " + wifiName);
+
+        curWifiName = wifiName;
+        t1.start();
+    }
+
+    Timer {
+        id: t1
+        interval: 2000
+        repeat: false
+        running: false
+        triggeredOnStart: false
+        onTriggered: {
+
+            console.log("--- curWifiName:" + curWifiName)
+            lblConnectedWifi.txt = "Connected To: " + curWifiName;
+        }
+    }
+
 
     //------------------------------------------------------------
     //                TOP BAR
@@ -59,13 +83,13 @@ Rectangle {
         }
 
         Timer {
-                id: timer
-                interval: 1000
-                repeat: false
-                running: false
-                triggeredOnStart: false
-                onTriggered: refreshWifiList();
-            }
+            id: timer
+            interval: 1000
+            repeat: false
+            running: false
+            triggeredOnStart: false
+            onTriggered: refreshWifiList();
+        }
 
         Text {
             anchors.centerIn: parent
@@ -86,7 +110,7 @@ Rectangle {
             }
         }
 
-        Button {
+        /*Button {
             id: refreshButton
             width: 50
             height: 50
@@ -98,7 +122,7 @@ Rectangle {
                 console.log("refreshing list of wifi nws");
                 refreshWifiList();
             }
-        }
+        }*/
 
     }//topBar
 
@@ -250,7 +274,7 @@ Rectangle {
                             if(checked) {
                                 txtPass.echoMode = TextInput.Normal
                             } else {
-                                 txtPass.echoMode = TextInput.Password
+                                txtPass.echoMode = TextInput.Password
                             }
                         }
 
@@ -270,7 +294,10 @@ Rectangle {
                         onClicked: {
                             console.log("Connecting " + modelData);
                             listItem.isExpanded = false;
-                            qmlBridge.connectToWifi(modelData, txtPass.text)
+                            //---------------------------------------------------------------//
+                            //qmlBridge.connectToWifi(modelData, txtPass.text)
+
+                            connectToWifi(modelData.getName());
                         }
                     }//btnConnect
 
@@ -335,10 +362,14 @@ Rectangle {
 
         Rectangle {
 
+            id: lblConnectedWifi
             width: bottomBar.width/4
             height: bottomBar.height
             color: bottomBar.color
+            property alias txt: wTxt.text
+
             Text {
+                id: wTxt
                 anchors.centerIn: parent
                 text: qsTr("Connected To: " + qmlBridge.getConectedWifiName());
                 color: "#ffffff"

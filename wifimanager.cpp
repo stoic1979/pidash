@@ -66,6 +66,29 @@ WifiManager::WifiManager(QObject *parent) : QObject(parent){}
 QList<QObject*> WifiManager::getWifiNetworks() {
 
     dataList.clear();
+
+    //QString str = "AIRTEL_E5172_B709:-53+Airtel-B310-0572:-40+JioFi2_9F03C0:-71+JioFi2_A885EA:-65";
+
+    QString str = "AIRTEL_E5172_B709:-53+JioFi2_9F03C0:-71+Airtel-B310-0572:-40";
+
+    QStringList cells = str.split("+");
+    for(int i=0; i< cells.length(); i++) {
+        QString cell = cells.at(i);
+
+        QStringList items = cell.split(":");
+
+        QString SSID = items.at(0);
+        int Strength = items.at(1).toInt();
+
+        qDebug () << "SSID: " << SSID;
+        qDebug () << "Strength: " << Strength;
+
+        dataList.append(new WifiInfo(SSID, Strength));
+    }
+
+
+
+
     return dataList;
 }
 

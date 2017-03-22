@@ -29,7 +29,7 @@ Rectangle {
             color: topBar.color
             Text {
                 anchors.centerIn: parent
-                text: qsTr("My Device Name")
+                text: qsTr("My Device Name: " + qmlBridge.getDeivceName());
                 color: "#ffffff"
                 x: 10
                 y: topBar.height/2
