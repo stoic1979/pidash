@@ -4,6 +4,7 @@
 #include <QQuickView>
 #include <QQmlContext>
 #include <QStringListModel>
+#include <QCursor>
 
 #include "qmlbridge.h"
 

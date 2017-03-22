@@ -12,6 +12,12 @@ Rectangle {
 
     property int barHeight: 60
 
+    function showPlaceholderPopup() {
+        rectPlacehoder.visible = true;
+        timerPlaceholder.start();
+
+    }
+
     //------------------------------------------------------------
     //                TOP BAR
     //------------------------------------------------------------
@@ -24,22 +30,17 @@ Rectangle {
 
         Rectangle {
 
-            width: topBar.width/5
+            width: topBar.width/2
             height: topBar.height
             color: topBar.color
+            x: 20
             Text {
                 anchors.centerIn: parent
                 text: qsTr("My Device Name: " + qmlBridge.getDeivceName());
                 color: "#ffffff"
-                x: 10
-                y: topBar.height/2
+                x: 60
+                y: topBar.height + 20
             }
-        }
-
-        Text {
-            anchors.centerIn: parent
-            text: qsTr("Home")
-            color: "#ffffff"
         }
 
 
@@ -58,7 +59,7 @@ Rectangle {
 
             id: wifiRect
             height: topBar.height
-            width: 80
+            width: 60
             anchors.left: btnNotify.right
             color: topBar.color
             Image {
@@ -145,36 +146,42 @@ Rectangle {
             width: centerGrid.width/4
             height: centerGrid.height/2 -2
             imgSrc: "qrc:/imgs/images/placeholder.png"
+            onClicked: showPlaceholderPopup();
         }
 
         Button {
             width: centerGrid.width/4
             height: centerGrid.height/2 -2
             imgSrc: "qrc:/imgs/images/users.png"
+            onClicked: showPlaceholderPopup();
         }
 
         Button {
             width: centerGrid.width/4
             height: centerGrid.height/2 - 6
             imgSrc: "qrc:/imgs/images/calendar.png"
+            onClicked: showPlaceholderPopup();
         }
 
         Button {
             width: centerGrid.width/4
             height: centerGrid.height/2 - 6
             imgSrc: "qrc:/imgs/images/photo-camera.png"
+            onClicked: showPlaceholderPopup();
         }
 
         Button {
             width: centerGrid.width/4
             height: centerGrid.height/2 - 6
             imgSrc: "qrc:/imgs/images/stopwatch.png"
+            onClicked: showPlaceholderPopup();
         }
 
         Button {
             width: centerGrid.width/4
             height: centerGrid.height/2 - 6
             imgSrc: "qrc:/imgs/images/file.png"
+            onClicked: showPlaceholderPopup();
         }
 
     }//centerGrid
@@ -204,6 +211,40 @@ Rectangle {
         }
     }//right
 
+    Timer {
+        id: timerPlaceholder
+        interval: 2000
+        repeat: false
+        running: false
+        triggeredOnStart: false
+        onTriggered: {
+           rectPlacehoder.visible = false;
+        }
+    }
+
+    //----------------------------------------------------------------------
+    // Network Loading Rectangle
+    //----------------------------------------------------------------------
+    Rectangle {
+        id: rectPlacehoder
+        anchors.centerIn: centerGrid
+        width: centerGrid.width/2 + 80
+        height: centerGrid.height/2 + 40
+        border.color: "#000000"
+        color: "blue"
+        radius: 8
+        z: 1000
+        visible: false
+
+        Text {
+            anchors.centerIn: parent
+            text: "Place holder, to be done..."
+            color: "#ffffff"
+            font.pixelSize: 15
+        }
+
+    }
+
     //------------------------------------------------------------
     //                BOTTOM BAR
     //------------------------------------------------------------
@@ -217,7 +258,7 @@ Rectangle {
 
         Rectangle {
 
-            width: bottomBar.width/4
+            width: bottomBar.width/2
             height: bottomBar.height
             color: bottomBar.color
             Text {

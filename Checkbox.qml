@@ -36,6 +36,7 @@ Rectangle {
 
         Text {
             text: checkbox.text
+            font.pixelSize: 10
             y: 4
         }
     }

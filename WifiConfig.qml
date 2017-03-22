@@ -233,8 +233,9 @@ Rectangle {
                         id: lblPass
                         color: "#000000"
                         text: "Password: "
-                        width: 70
+                        width: 60
                         y: rectPass.height/3
+                        font.pixelSize: 10
                     }
 
                     Rectangle {
@@ -244,14 +245,14 @@ Rectangle {
 
                         border.color: "black"
                         radius: 4
-                        width: 270
+                        width: 100
                         height: 40
 
                         TextInput {
                             x: 8
                             y: rectPass.height/3
                             id: txtPass
-                            width: 240
+                            width: 100
                             height: 40
                             readOnly: false
                             color: "#000000"
@@ -363,7 +364,7 @@ Rectangle {
         Rectangle {
 
             id: lblConnectedWifi
-            width: bottomBar.width/4
+            width: bottomBar.width/2
             height: bottomBar.height
             color: bottomBar.color
             property alias txt: wTxt.text
